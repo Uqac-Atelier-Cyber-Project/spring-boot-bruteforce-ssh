@@ -6,6 +6,7 @@ ro:ro
 rw:rw
 rwa:rwa
 sa:
+uqac:uqac
 sa:sasasa
 sysadmin:master
 sysadm:sysadm
