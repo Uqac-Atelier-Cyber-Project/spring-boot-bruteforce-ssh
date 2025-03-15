@@ -1,5 +1,6 @@
 package com.uqac.bruteforce_ssh.controller;
 
+import com.uqac.bruteforce_ssh.dto.ServiceRequest;
 import com.uqac.bruteforce_ssh.services.CppExecutionService;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,14 +22,14 @@ public class CppExecutionController {
 
     /**
      * Lance un scan de ports en C++ pour une adresse IP donnée
-     * @param ip Adresse IP à scanner
-     * @param path Chemin du fichier
+     * @param request Requête de soumission
      * @return Message de confirmation
      */
-    @GetMapping("/execute-cpp")
-    public String executeCpp(@RequestParam String ip, @RequestParam String path) {
+    @PostMapping("/execute-cpp")
+    public String executeCpp(@RequestBody ServiceRequest request) {
         String scanId = UUID.randomUUID().toString(); // Génère un identifiant unique
-        cppExecutionService.executeCppProgram(ip, path, scanId);
+        String path = "src/main/resources/cppSSHAttack/wordList_ssh_hydra.txt"; // Chemin du fichier
+        cppExecutionService.executeCppProgram(request.getReportId(), request.getOption(), path, scanId);
         return "Scan lancé avec ID: " + scanId;
     }
 
