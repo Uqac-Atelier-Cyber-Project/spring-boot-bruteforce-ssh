@@ -28,8 +28,7 @@ public class CppExecutionController {
     @PostMapping("/execute-cpp")
     public String executeCpp(@RequestBody ServiceRequest request) {
         String scanId = UUID.randomUUID().toString(); // Génère un identifiant unique
-        String path = "src/main/resources/cppSSHAttack/wordList_ssh_hydra.txt"; // Chemin du fichier
-        cppExecutionService.executeCppProgram(request.getReportId(), request.getOption(), path, scanId);
+        cppExecutionService.executeCppProgram(request.getReportId(), request.getOption(), scanId);
         return "Scan lancé avec ID: " + scanId;
     }
 

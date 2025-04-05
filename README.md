@@ -44,11 +44,21 @@ Ce projet est une application Spring Boot qui exécute des attaques par force br
     ```json
     {
         "reportId": 1,
-        "option": "someOption"
+        "option": "IP" // ou "HOSTNAME",
     }
     ```
 
 3. Vérifiez le statut du scan en envoyant une requête GET à l'endpoint `/scan-status/{scanId}`.
+
+4. Generation du JAR avec Maven et installation :
+
+    ```bash
+    mvn clean package
+    mvn package
+    # Execution du JAR
+    java -jar target/spring-boot-bruteforce-ssh-0.0.1-SNAPSHOT.jar --api.externe.url=<URL_MAIN_SERVER_API> --server.port=<PORT>
+    ```
+
 
 ## Structure du projet
 
